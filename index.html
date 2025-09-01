@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>SehatLink - Rural Health Platform</title>
+    <meta name="description" content="AI-powered healthcare platform for rural communities">
+    <meta name="theme-color" content="#28a745">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SehatLink">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#28a745">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 id="welcome-title">Welcome to SehatLink</h1>
+            <p id="subtitle">Your Health Companion for Rural Communities</p>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <label class="form-label" style="color: white;" id="language-label">
+                    Select Language
+                </label>
+                <div style="position: relative; max-width: 200px; margin: 0 auto;">
+                    <select class="form-select" id="language-select" aria-label="Select Language">
+                        <option value="en">English (English)</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="bho">भोजपुरी (Bhojpuri)</option>
+                    </select>
+                </div>
+                <button class="voice-btn" id="language-voice-btn" title="Play voice">🔊</button>
+            </div>
+
+            <!-- Status Indicators -->
+            <div style="margin-top: 16px;">
+                <span class="status-indicator" id="connection-status">Online</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 32px 16px;">
+        <!-- Patient Features - No Login Required -->
+        <section class="card">
+            <div class="card-header">
+                <h2 id="patient-services-title">Patient Services</h2>
+                <p id="patient-services-desc">Access health services without login</p>
+            </div>
+
+            <div class="button-grid">
+                <a href="reminders.html" class="btn btn-primary btn-large" id="view-reminders-btn">
+                    <span id="view-reminders-text">View Reminders</span>
+                    <button class="voice-btn" onclick="playVoice('view-reminders')" style="margin-left: 12px;">🔊</button>
+                </a>
+
+                <a href="symptoms.html" class="btn btn-secondary btn-large" id="check-symptoms-btn">
+                    <span id="check-symptoms-text">Check Symptoms</span>
+                    <button class="voice-btn" onclick="playVoice('check-symptoms')" style="margin-left: 12px;">🔊</button>
+                </a>
+
+                <a href="health-tips.html" class="btn btn-warning btn-large" id="health-tips-btn">
+                    <span id="health-tips-text">Health Tips</span>
+                    <button class="voice-btn" onclick="playVoice('health-tips')" style="margin-left: 12px;">🔊</button>
+                </a>
+
+                <a href="nutrition.html" class="btn btn-primary btn-large" id="track-nutrition-btn">
+                    <span id="track-nutrition-text">Track Nutrition</span>
+                    <button class="voice-btn" onclick="playVoice('track-nutrition')" style="margin-left: 12px;">🔊</button>
+                </a>
+
+                <a href="emergency.html" class="btn btn-danger btn-large" id="emergency-help-btn">
+                    <span id="emergency-help-text">Emergency Help</span>
+                    <button class="voice-btn" onclick="playVoice('emergency-help')" style="margin-left: 12px;">🔊</button>
+                </a>
+
+                <a href="alerts.html" class="btn btn-warning btn-large" id="community-alerts-btn">
+                    <span id="community-alerts-text">Community Alerts</span>
+                    <button class="voice-btn" onclick="playVoice('community-alerts')" style="margin-left: 12px;">🔊</button>
+                </a>
+            </div>
+        </section>
+
+        <!-- Admin Access -->
+        <section class="card">
+            <div class="card-header">
+                <h2 id="admin-section-title">Healthcare Professionals</h2>
+                <p id="admin-section-desc">Secure access for doctors and CHWs</p>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="admin-login.html" class="btn btn-primary btn-large" id="admin-login-btn">
+                    <span id="admin-login-text">Admin Login</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- PWA Install Prompt -->
+        <section class="card">
+            <div style="text-align: center;">
+                <h3 id="install-app-title">Add to Home Screen</h3>
+                <p id="install-app-desc">Install SehatLink on your device for offline access</p>
+                <button class="btn btn-secondary" id="install-app-btn">
+                    <span id="install-app-text">Add to Home Screen</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Offline Indicator -->
+    <div id="offline-indicator" class="offline-indicator" style="display: none;">
+        <span id="offline-text">Offline Mode Active</span>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+        <div class="pwa-install-content">
+            <h4>Install SehatLink</h4>
+            <p>Add to your home screen for quick access</p>
+            <div class="pwa-install-buttons">
+                <button id="pwa-install-btn" class="btn btn-primary">Install</button>
+                <button id="pwa-dismiss-btn" class="btn btn-secondary">Later</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

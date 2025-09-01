@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Offline - SehatLink</title>
+    <meta name="description" content="SehatLink is currently offline">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>SehatLink</h1>
+            <p>You're Currently Offline</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 16px;">
+        <!-- Offline Message -->
+        <div class="card" style="text-align: center; max-width: 500px; margin: 0 auto;">
+            <div style="font-size: 64px; margin-bottom: 24px;">📱</div>
+            <h2>No Internet Connection</h2>
+            <p style="font-size: 18px; margin-bottom: 24px;">
+                Don't worry! You can still access some features while offline.
+            </p>
+            
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="window.location.reload()">
+                    Try Again
+                </button>
+                <a href="index.html" class="btn btn-secondary">
+                    Go Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Available Offline Features -->
+        <div class="card" style="margin-top: 24px;">
+            <div class="card-header">
+                <h2>Available Offline</h2>
+                <p>These features work without internet connection</p>
+            </div>
+            
+            <div class="button-grid">
+                <a href="symptoms.html" class="btn btn-secondary btn-large">
+                    Symptom Checker
+                    <br><small>Basic analysis available</small>
+                </a>
+                
+                <a href="reminders.html" class="btn btn-secondary btn-large">
+                    View Reminders
+                    <br><small>Saved reminders</small>
+                </a>
+                
+                <a href="health-tips.html" class="btn btn-secondary btn-large">
+                    Health Tips
+                    <br><small>Cached content</small>
+                </a>
+                
+                <a href="emergency.html" class="btn btn-danger btn-large">
+                    Emergency Help
+                    <br><small>Emergency contacts</small>
+                </a>
+            </div>
+        </div>
+
+        <!-- Offline Tips -->
+        <div class="card" style="margin-top: 24px; background-color: #f8f9fa;">
+            <h3>Offline Tips</h3>
+            <ul style="padding-left: 20px;">
+                <li>Your data is saved locally and will sync when you're back online</li>
+                <li>Emergency contacts are always available</li>
+                <li>Basic symptom analysis works offline with cached data</li>
+                <li>Reminders and health tips are stored on your device</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Check connection status
+        function updateConnectionStatus() {
+            if (navigator.onLine) {
+                window.location.href = 'index.html'
+            }
+        }
+
+        // Listen for online event
+        window.addEventListener('online', updateConnectionStatus)
+        
+        // Check every 5 seconds
+        setInterval(updateConnectionStatus, 5000)
+    </script>
+</body>
+</html>

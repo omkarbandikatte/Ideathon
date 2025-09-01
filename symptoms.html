@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AI Symptom Checker - SehatLink</title>
+    <meta name="description" content="AI-powered symptom checker for rural healthcare">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 id="page-title">AI Symptom Checker</h1>
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 12px;">
+                <a href="index.html" class="btn btn-secondary" id="back-home-btn">Back to Home</a>
+                <button class="btn btn-warning" id="saved-checks-btn" onclick="toggleSavedChecks()">
+                    <span id="saved-checks-text">Saved Checks</span> (<span id="saved-count">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 16px;">
+        <!-- Offline Notice -->
+        <div id="offline-notice" class="alert alert-warning" style="margin-bottom: 24px; display: none;">
+            <strong>⚠️ <span id="offline-notice-text">You're offline. Analysis will use cached data.</span></strong>
+        </div>
+
+        <!-- Saved Checks Section -->
+        <div id="saved-checks-section" class="card" style="display: none;">
+            <div class="card-header">
+                <h2 id="saved-checks-title">Saved Checks</h2>
+            </div>
+            <div id="saved-checks-list">
+                <p id="no-saved-checks">No saved checks yet.</p>
+            </div>
+        </div>
+
+        <!-- Symptom Input -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="enter-symptoms-title">Enter Your Symptoms</h2>
+            </div>
+
+            <!-- Text Input -->
+            <div class="form-group">
+                <textarea 
+                    id="symptoms-input"
+                    class="form-input" 
+                    rows="4" 
+                    placeholder="Describe your symptoms (e.g., fever for 3 days, headache, body pain)"
+                ></textarea>
+                <div style="display: flex; gap: 12px; margin-top: 12px;">
+                    <button 
+                        id="voice-input-btn"
+                        class="voice-btn" 
+                        onclick="startVoiceInput()" 
+                        title="Voice Input"
+                    >
+                        🎤
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearSymptoms()" id="clear-btn">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Common Symptoms -->
+            <div>
+                <h3 id="common-symptoms-title">Common Symptoms</h3>
+                <div id="symptoms-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+                    <!-- Symptoms buttons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Analyze Button -->
+            <div style="text-align: center; margin-top: 24px;">
+                <button 
+                    id="analyze-btn"
+                    class="btn btn-primary btn-large" 
+                    onclick="analyzeSymptoms()"
+                >
+                    <span id="analyze-text">Analyze Symptoms</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Analysis Result -->
+        <div id="result-section" class="card" style="display: none;">
+            <div class="card-header">
+                <h2 id="result-title">Analysis Result</h2>
+                <button class="voice-btn" id="result-voice-btn" onclick="playResultVoice()">🔊</button>
+            </div>
+
+            <!-- Condition and Confidence -->
+            <div style="margin-bottom: 24px;">
+                <h3 id="condition-name"></h3>
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                    <div style="flex: 1;">
+                        <div style="background-color: #e9ecef; border-radius: 10px; height: 20px; overflow: hidden;">
+                            <div id="confidence-bar" style="background-color: #28a745; height: 100%; border-radius: 10px;"></div>
+                        </div>
+                        <p id="confidence-text" style="margin-top: 8px; font-size: 16px;"></p>
+                    </div>
+                    <span id="severity-badge" class="status-indicator"></span>
+                </div>
+                <p id="condition-description"></p>
+            </div>
+
+            <!-- Recommendations -->
+            <div style="margin-bottom: 24px;">
+                <h3 id="recommendations-title">Recommendations</h3>
+                <ul id="recommendations-list" style="padding-left: 20px;"></ul>
+            </div>
+
+            <!-- Medical Help Alert -->
+            <div id="medical-help-alert" class="alert alert-danger" style="display: none;">
+                <strong id="seek-help-text">Seek Medical Help:</strong> 
+                <span>Based on your symptoms, it's recommended to consult a healthcare professional.</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-grid">
+                <button class="btn btn-secondary" onclick="saveCheck()" id="save-offline-btn">Save Offline</button>
+                <button class="btn btn-primary" id="request-chw-btn" onclick="requestCHW()">Request CHW</button>
+                <button class="btn btn-warning" onclick="viewSimilarCases()" id="view-similar-btn">View Similar Cases</button>
+                <a href="emergency.html" class="btn btn-danger" id="emergency-btn" style="display: none;">Seek Help</a>
+            </div>
+        </div>
+
+        <!-- Educational Content -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Health Education</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <div style="padding: 16px; background-color: #f8f9fa; border-radius: 6px;">
+                    <h4>When to Seek Help</h4>
+                    <p>Contact a healthcare provider if symptoms worsen or persist for more than 3 days.</p>
+                </div>
+                <div style="padding: 16px; background-color: #f8f9fa; border-radius: 6px;">
+                    <h4>Prevention Tips</h4>
+                    <p>Wash hands regularly, maintain good hygiene, and eat nutritious food to prevent illness.</p>
+                </div>
+                <div style="padding: 16px; background-color: #f8f9fa; border-radius: 6px;">
+                    <h4>Emergency Signs</h4>
+                    <p>Difficulty breathing, chest pain, severe headache, or high fever require immediate attention.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="symptoms.js"></script>
+</body>
+</html>

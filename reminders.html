@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Health Reminders - SehatLink</title>
+    <meta name="description" content="Manage your health reminders and medication schedules">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 id="page-title">Health Reminders</h1>
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 12px;">
+                <a href="index.html" class="btn btn-secondary" id="back-home-btn">Back to Home</a>
+                <button class="btn btn-primary" onclick="addReminder()" id="add-reminder-btn">Add Reminder</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 16px;">
+        <!-- Today's Reminders -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="today-reminders-title">Today's Reminders</h2>
+                <p id="today-date"></p>
+            </div>
+            <div id="today-reminders-list">
+                <!-- Today's reminders will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- All Reminders -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="all-reminders-title">All Reminders</h2>
+                <p id="reminders-count">0 active reminders</p>
+            </div>
+            <div id="all-reminders-list">
+                <!-- All reminders will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Add Reminder Modal -->
+        <div id="add-reminder-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="add-reminder-title">Add New Reminder</h3>
+                    <button class="modal-close" onclick="closeAddReminderModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label id="reminder-type-label">Reminder Type</label>
+                        <select id="reminder-type" class="form-select">
+                            <option value="medication">Medication</option>
+                            <option value="appointment">Doctor Appointment</option>
+                            <option value="exercise">Exercise</option>
+                            <option value="checkup">Health Checkup</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="reminder-title-label">Title</label>
+                        <input type="text" id="reminder-title-input" class="form-input" placeholder="Enter reminder title">
+                    </div>
+                    <div class="form-group">
+                        <label id="reminder-time-label">Time</label>
+                        <input type="time" id="reminder-time-input" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label id="reminder-frequency-label">Frequency</label>
+                        <select id="reminder-frequency" class="form-select">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="once">One Time</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="reminder-notes-label">Notes (Optional)</label>
+                        <textarea id="reminder-notes" class="form-input" rows="3" placeholder="Additional notes"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeAddReminderModal()" id="cancel-btn">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveReminder()" id="save-reminder-btn">Save Reminder</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="reminders.js"></script>
+</body>
+</html>

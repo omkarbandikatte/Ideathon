@@ -1,0 +1,859 @@
+/* SehatLink Healthcare Platform - Custom CSS */
+/* Optimized for low-bandwidth, mobile-first design */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* High contrast colors for accessibility */
+:root {
+  --primary-color: #28a745; /* Changed primary color from blue to green for better healthcare branding */
+  --secondary-color: #17a2b8;
+  --accent-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+  --dark-text: #333333;
+  --light-text: #666666;
+  --border-color: #dee2e6;
+}
+
+/* Typography - Large fonts for low literacy users */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--dark-text);
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--dark-text);
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--dark-text);
+}
+
+/* Container and Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 16px 0;
+  text-align: center;
+}
+
+.header h1 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.language-selector {
+  margin-top: 16px;
+}
+
+/* Buttons - Large and accessible */
+.btn {
+  display: inline-block;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-height: 56px;
+  min-width: 120px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: #1e7e34; /* Updated hover color to match new primary color */
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: #12b0db;
+}
+
+.btn-warning {
+  background-color: var(--accent-color);
+  color: var(--dark-text);
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: var(--white);
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-large {
+  padding: 20px 32px;
+  font-size: 20px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Grid Layout for buttons */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+@media (min-width: 768px) {
+  .button-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .button-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Cards */
+.card {
+  background-color: var(--white);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--dark-text);
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-select {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--dark-text);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  cursor: pointer;
+  /* Force white background and dark text for all browsers */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-select:hover {
+  border-color: var(--primary-color);
+}
+
+.form-select option {
+  padding: 12px;
+  background-color: var(--white);
+  color: var(--dark-text);
+  font-size: 18px;
+}
+
+.form-select option:hover,
+.form-select option:focus {
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+.form-select option:checked {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Voice controls */
+.voice-btn {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-btn:hover {
+  background-color: #12b0db;
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-online {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.status-offline {
+  background-color: var(--danger-color);
+  color: var(--white);
+}
+
+.status-pending {
+  background-color: var(--accent-color);
+  color: var(--dark-text);
+}
+
+/* Navigation */
+.nav {
+  background-color: var(--white);
+  border-bottom: 2px solid var(--border-color);
+  padding: 16px 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.nav-link {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--light-bg);
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Loading states */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--border-color);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Alert messages */
+.alert {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 2px solid #c3e6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 2px solid #ffeaa7;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 2px solid #f5c6cb;
+}
+
+.alert-info {
+  background-color: #cce7ff;
+  color: #004085;
+  border: 2px solid #b3d7ff;
+}
+
+/* Health Tips Page Specific Styles */
+.health-tips-container {
+  min-height: 100vh;
+  background-color: var(--light-bg);
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #20c997 100%);
+  color: var(--white);
+  padding: 24px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.app-title {
+  color: var(--white);
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.language-dropdown {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  min-width: 150px;
+}
+
+.language-dropdown option {
+  background-color: var(--white);
+  color: var(--dark-text);
+  padding: 12px;
+}
+
+.offline-banner {
+  background-color: var(--accent-color);
+  color: var(--dark-text);
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.offline-icon {
+  font-size: 20px;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.tab-navigation {
+  display: flex;
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 8px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: var(--light-text);
+}
+
+.tab-button.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.tab-button:hover:not(.active) {
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+/* Tips Section */
+.tips-section {
+  margin-bottom: 32px;
+}
+
+.category-filter {
+  margin-bottom: 24px;
+}
+
+.category-dropdown {
+  width: 100%;
+  max-width: 300px;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--dark-text);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tips-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tip-card {
+  background-color: var(--white);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.tip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.tip-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.audio-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.audio-button:hover {
+  background-color: #138496;
+}
+
+.tip-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dark-text);
+  margin-bottom: 16px;
+}
+
+.tip-category {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tip-category.general {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.tip-category.nutrition {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+.tip-category.exercise {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.tip-category.hygiene {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+/* Nutrition Section */
+.nutrition-section {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .nutrition-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.nutrition-input {
+  background-color: var(--white);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-input h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.food-input {
+  flex: 1;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.food-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.voice-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.voice-button:hover {
+  background-color: #138496;
+}
+
+.add-food-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-food-button:hover {
+  background-color: #1e7e34;
+}
+
+.nutrition-log {
+  background-color: var(--white);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-log h3 {
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.meals-count {
+  font-size: 16px;
+  color: var(--light-text);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.meals-list {
+  margin-bottom: 24px;
+}
+
+.meal-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--light-bg);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.meal-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.meal-name {
+  flex: 1;
+  font-weight: bold;
+  color: var(--dark-text);
+}
+
+.meal-time {
+  font-size: 14px;
+  color: var(--light-text);
+  flex-shrink: 0;
+}
+
+.share-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #138496;
+}
+
+.navigation-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.back-button {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--light-text);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: #495057;
+}
+
+/* Mobile responsiveness for health tips */
+@media (max-width: 767px) {
+  .app-title {
+    font-size: 24px;
+  }
+
+  .tab-navigation {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tab-button {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .tip-card {
+    padding: 20px;
+  }
+
+  .tip-title {
+    font-size: 18px;
+  }
+
+  .tip-content {
+    font-size: 15px;
+  }
+
+  .nutrition-section {
+    grid-template-columns: 1fr;
+  }
+
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .voice-button {
+    align-self: center;
+    margin-top: 8px;
+  }
+}

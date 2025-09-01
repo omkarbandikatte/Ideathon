@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Admin Login - SehatLink</title>
+    <meta name="description" content="Secure login for healthcare professionals">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 id="page-title">Admin Login</h1>
+            <p id="page-subtitle">Healthcare Professionals Access</p>
+            <a href="index.html" class="btn btn-secondary" style="margin-top: 12px;" id="back-home-btn">Back to Home</a>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 16px; max-width: 500px;">
+        <!-- Demo Credentials Info -->
+        <div id="demo-credentials" class="card" style="margin-bottom: 24px; background-color: #e7f3ff;">
+            <div class="card-header">
+                <h3 id="demo-title">Demo Credentials</h3>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <button class="btn btn-primary" onclick="fillDemoCredentials('doctor')" id="doctor-demo-btn">
+                    <span id="doctor-text">Doctor</span>
+                    <br>
+                    <small>dr.sharma / doctor123</small>
+                </button>
+                <button class="btn btn-secondary" onclick="fillDemoCredentials('chw')" id="chw-demo-btn">
+                    <span id="chw-text">Community Health Worker</span>
+                    <br>
+                    <small>chw.priya / chw123</small>
+                </button>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="card">
+            <form onsubmit="handleLogin(event)">
+                <!-- Role Selection -->
+                <div class="form-group">
+                    <label class="form-label" id="role-label">Role</label>
+                    <select id="role-select" class="form-select" required>
+                        <option value="doctor" id="doctor-option">Doctor</option>
+                        <option value="chw" id="chw-option">Community Health Worker</option>
+                    </select>
+                </div>
+
+                <!-- Username -->
+                <div class="form-group">
+                    <label class="form-label" id="username-label">Username</label>
+                    <input 
+                        type="text" 
+                        id="username-input"
+                        class="form-input" 
+                        placeholder="Enter your username" 
+                        required
+                    />
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label" id="password-label">Password</label>
+                    <div style="position: relative;">
+                        <input 
+                            type="password" 
+                            id="password-input"
+                            class="form-input" 
+                            placeholder="Enter your password" 
+                            required
+                            style="padding-right: 120px;"
+                        />
+                        <button 
+                            type="button" 
+                            id="toggle-password-btn"
+                            onclick="togglePassword()"
+                            style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #666; font-size: 14px; cursor: pointer;"
+                        >
+                            Show Password
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="alert alert-danger" style="margin-bottom: 20px; display: none;"></div>
+
+                <!-- Login Button -->
+                <button type="submit" id="login-btn" class="btn btn-primary btn-large">
+                    <span id="login-text">Login</span>
+                </button>
+
+                <!-- Forgot Password Link -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <button 
+                        type="button" 
+                        id="forgot-password-btn"
+                        onclick="showForgotPassword()"
+                        style="background: none; border: none; color: #28a745; text-decoration: underline; cursor: pointer; font-size: 16px;"
+                    >
+                        Forgot Password?
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-password-form" class="card" style="display: none;">
+            <div class="card-header">
+                <h2 id="reset-password-title">Reset Password</h2>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" id="phone-label">Phone Number</label>
+                <input 
+                    type="tel" 
+                    id="phone-input"
+                    class="form-input" 
+                    placeholder="+91-9876543210" 
+                    required
+                />
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-primary" onclick="handleForgotPassword()" id="send-sms-btn">
+                    Send SMS Reset
+                </button>
+                <button class="btn btn-secondary" onclick="hideForgotPassword()" id="back-to-login-btn">
+                    Back to Login
+                </button>
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="card" style="margin-top: 24px; background-color: #f8f9fa;">
+            <h4>Access Information</h4>
+            <ul style="padding-left: 20px; margin-bottom: 0;">
+                <li>Doctors can access patient records and analytics</li>
+                <li>CHWs can update patient status and add notes</li>
+                <li>All sessions are secure and logged</li>
+                <li>Contact IT support for account issues</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="admin-login.js"></script>
+</body>
+</html>

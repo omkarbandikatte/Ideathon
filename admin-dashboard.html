@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Doctor Dashboard - SehatLink</title>
+    <meta name="description" content="Healthcare professional dashboard for patient management">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="header">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h1 id="dashboard-title">Doctor Dashboard</h1>
+                    <p id="welcome-message">Welcome back, Dr. Sharma</p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <span id="user-role" class="status-indicator status-online">Doctor</span>
+                    <button class="btn btn-secondary" onclick="logout()" id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 16px;">
+        <!-- Overview Statistics -->
+        <section class="card">
+            <div class="card-header">
+                <h2 id="overview-title">Patient Overview</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="text-align: center; padding: 20px; background-color: #e7f3ff; border-radius: 8px;">
+                    <h3 style="font-size: 32px; color: #28a745; margin-bottom: 8px;" id="total-patients">5</h3>
+                    <p style="margin: 0; font-weight: bold;" id="total-patients-label">Total Patients</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background-color: #ffe7e7; border-radius: 8px;">
+                    <h3 style="font-size: 32px; color: #dc3545; margin-bottom: 8px;" id="high-risk-count">2</h3>
+                    <p style="margin: 0; font-weight: bold;" id="high-risk-label">High Risk</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background-color: #e7ffe7; border-radius: 8px;">
+                    <h3 style="font-size: 32px; color: #28a745; margin-bottom: 8px;" id="avg-adherence">79%</h3>
+                    <p style="margin: 0; font-weight: bold;" id="avg-adherence-label">Avg Adherence</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background-color: #fff3e7; border-radius: 8px;">
+                    <h3 style="font-size: 32px; color: #ffc107; margin-bottom: 8px;" id="alerts-count">3</h3>
+                    <p style="margin: 0; font-weight: bold;" id="alerts-label">Recent Alerts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outbreak Alerts -->
+        <section class="card">
+            <div class="card-header">
+                <h2 id="outbreak-alerts-title">Outbreak Alerts</h2>
+            </div>
+            <div id="outbreak-alerts-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <!-- Outbreak alerts will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Patient Management -->
+        <section class="card">
+            <div class="card-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <h2 id="patient-list-title">Patient Management</h2>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <button class="btn btn-primary" onclick="exportData()" id="export-btn">Export Data</button>
+                        <div style="display: flex; gap: 8px;">
+                            <button id="table-view-btn" class="btn btn-primary" onclick="setViewMode('table')">Table</button>
+                            <button id="cards-view-btn" class="btn btn-secondary" onclick="setViewMode('cards')">Cards</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <div class="form-group">
+                    <label class="form-label" id="filter-region-label">Filter by Region</label>
+                    <select id="filter-region" class="form-select" onchange="applyFilters()">
+                        <option value="all">All Regions</option>
+                        <option value="North Village">North Village</option>
+                        <option value="South Village">South Village</option>
+                        <option value="East Village">East Village</option>
+                        <option value="West Village">West Village</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="filter-chw-label">Filter by CHW</label>
+                    <select id="filter-chw" class="form-select" onchange="applyFilters()">
+                        <option value="all">All CHWs</option>
+                        <option value="Priya Devi">Priya Devi</option>
+                        <option value="Ram Kumar">Ram Kumar</option>
+                        <option value="Meera Joshi">Meera Joshi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="filter-risk-label">Filter by Risk</label>
+                    <select id="filter-risk" class="form-select" onchange="applyFilters()">
+                        <option value="all">All Risk Levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="sort-by-label">Sort by</label>
+                    <select id="sort-by" class="form-select" onchange="applyFilters()">
+                        <option value="adherence">Adherence (Low to High)</option>
+                        <option value="risk">Risk Level</option>
+                        <option value="name">Name (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Patient List Container -->
+            <div id="patient-list-container">
+                <!-- Patient list will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Patient Details Modal -->
+    <div id="patient-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="patient-details-title">Patient Details</h3>
+                <button class="modal-close" onclick="closePatientModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="patient-details-content">
+                <!-- Patient details will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="savePatientNote()" id="save-note-btn">Save Note</button>
+                <button class="btn btn-secondary" onclick="closePatientModal()" id="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>
